@@ -1,4 +1,15 @@
 ﻿#region 1
+int[] Notas = { 10, 8, 9, 10,9, 8, 9, 8, 10, 10 };
+int total = 0;
+Console.WriteLine($"Notas de examenes");
+for(int i=0; i < Notas.Length; i++)
+{
+    total += Notas[i];
+    Console.WriteLine($"Examen {i + 1}: {Notas[i]}");
+}
+decimal promedio = total / Notas.Length;
+
+Console.WriteLine($"El promedio es: {promedio}");
 
 #endregion
 
