@@ -130,7 +130,8 @@ if (productos.Count == 0)
 {
     Console.WriteLine("No quedan productos en la lista.");
     return;
-}else
+}
+else
 {
     Console.WriteLine("Lista de productos comprados:");
     foreach (var itemProducto in productos)
@@ -142,6 +143,25 @@ if (productos.Count == 0)
 #endregion
 
 #region 5
+var matriz5x5 = new char[5, 5];
+
+for (int i = 0; i < 5; i++)
+{
+    for (int j = 0; j < 5; j++)
+    {
+        if (j  % 2 == 0)
+        {
+            matriz5x5[i, j] = 'P';
+            Console.Write(matriz5x5[i, j] + " ");
+        }
+        else
+        {
+            matriz5x5[i, j] = 'I';
+            Console.Write(matriz5x5[i, j] + " ");
+        }       
+    }
+    Console.WriteLine();
+}
 
 #endregion
 
