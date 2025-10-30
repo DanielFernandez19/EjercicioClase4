@@ -35,30 +35,109 @@ Console.WriteLine($"Son {cantidadMayores} personas mayores de edad y {cantidadMe
 
 #region 3
 
-    string[] nombres = { "Ana", "Juan", "Maximiliano", "Ev", "Alejandro", "Leo", "Elizabeth", "Ed", "Christopher", "Sol" };
+string[] nombres = { "Ana", "Juan", "Maximiliano", "Ev", "Alejandro", "Leo", "Elizabeth", "Ed", "Christopher", "Sol" };
 
-    string nombreMasCorto = nombres[0];
-    string nombreMasLargo = nombres[0];
+string nombreMasCorto = nombres[0];
+string nombreMasLargo = nombres[0];
 
-    foreach (string nombre in nombres)
-    {   
-        if (nombre.Length < nombreMasCorto.Length)
-        {
-            nombreMasCorto = nombre;
-        }
-    
-        if (nombre.Length > nombreMasLargo.Length)
-        {
-            nombreMasLargo = nombre;
-        }
+foreach (string nombre in nombres)
+{
+    if (nombre.Length < nombreMasCorto.Length)
+    {
+        nombreMasCorto = nombre;
     }
 
-    Console.WriteLine($"El Nombre más corto: {nombreMasCorto} ({nombreMasCorto.Length} letras)");
-    Console.WriteLine($"El Nombre más largo: {nombreMasLargo} ({nombreMasLargo.Length} letras)");
+    if (nombre.Length > nombreMasLargo.Length)
+    {
+        nombreMasLargo = nombre;
+    }
+}
+
+Console.WriteLine($"El Nombre más corto: {nombreMasCorto} ({nombreMasCorto.Length} letras)");
+Console.WriteLine($"El Nombre más largo: {nombreMasLargo} ({nombreMasLargo.Length} letras)");
 
 #endregion
 
 #region 4
+List<string> productos = ["leche", "pan", "huevos", "arroz"];
+List<string> productosEliminados = [];
+List<string> productosAgregados = [];
+string producto = "";
+do
+{
+    Console.WriteLine("Ingrese el nombre del producto (o 'fin' para terminar):");
+    producto = Console.ReadLine();
+
+    if (producto.ToLower().Trim() == "fin")
+    {
+        break;
+    }
+
+    if (string.IsNullOrWhiteSpace(producto))
+    {
+        Console.WriteLine("El nombre del producto no puede estar vacío. Intente nuevamente.");
+        continue;
+    }
+
+    if (productos.Contains(producto.TrimEnd()))
+    {
+        Console.WriteLine($"{producto} ya ha sido ingresado. sera eliminado");
+        productosEliminados.Add(producto);
+        productos.Remove(producto);
+
+        Thread.Sleep(800);
+        Console.Clear();
+        continue;
+    }
+
+    productos.Add(producto.ToLower().TrimStart().TrimEnd());
+    productosAgregados.Add(producto.ToLower().TrimStart().TrimEnd());
+    Console.WriteLine($"Producto '{producto}' agregado.");
+    Thread.Sleep(800);
+    Console.Clear();
+
+} while (true);
+
+Console.Clear();
+
+if (productosAgregados.Count == 0)
+{
+    Console.WriteLine("No se han ingresado productos.");
+
+}
+else
+{
+    Console.WriteLine("Lista de productos ingresados:");
+    foreach (var agregado in productosAgregados)
+    {
+        Console.WriteLine(agregado);
+    }
+}
+
+if (productosEliminados.Count == 0)
+{
+    Console.WriteLine("No se han eliminado productos.");
+}
+else
+{
+    foreach (var Eliminado in productosEliminados)
+    {
+        Console.WriteLine(Eliminado);
+    }
+}
+
+if (productos.Count == 0)
+{
+    Console.WriteLine("No quedan productos en la lista.");
+    return;
+}else
+{
+    Console.WriteLine("Lista de productos comprados:");
+    foreach (var itemProducto in productos)
+    {
+        Console.WriteLine(itemProducto);
+    }
+}
 
 #endregion
 
