@@ -149,7 +149,7 @@ for (int i = 0; i < 5; i++)
 {
     for (int j = 0; j < 5; j++)
     {
-        if (j  % 2 == 0)
+        if (j % 2 == 0)
         {
             matriz5x5[i, j] = 'P';
             Console.Write(matriz5x5[i, j] + " ");
@@ -158,7 +158,7 @@ for (int i = 0; i < 5; i++)
         {
             matriz5x5[i, j] = 'I';
             Console.Write(matriz5x5[i, j] + " ");
-        }       
+        }
     }
     Console.WriteLine();
 }
@@ -166,7 +166,115 @@ for (int i = 0; i < 5; i++)
 #endregion
 
 #region 6
+int[,] temperaturaMayo = new int[5, 7];
+string diaXSemanaMaxima = "";
+string diaXSemanaMinima = "";
+int temperaturaMaxima = 0;
+int temperaturaMinima = 0;
+int temperaturaPromedio = 0;
+string diaXMesMaxima = "";
+int temperaturaMaximaMes = 0;
 
+Random random = new Random();
+
+Console.WriteLine("Temperaturas de Mayo (L-D):");
+Console.WriteLine(" Lu  Ma  Mi  Ju  Vi  Sa  Do");
+Console.WriteLine(" --------------------------");
+
+int dia = 1;
+for (int i = 0; i < 5; i++)
+{
+    for (int j = 0; j < 7; j++)
+    {
+        if (dia <= 31)
+        {
+            temperaturaMayo[i, j] = random.Next(7, 39);
+            Console.Write($" {temperaturaMayo[i, j]:D2} ");
+        }
+        else
+        {
+            Console.Write("-- ");
+        }
+        dia++;
+    }
+    Console.WriteLine();
+}
+
+for (int semana = 0; semana < 5; semana++)
+{
+    for (int diaSemana = 0; diaSemana < 7; diaSemana++)
+    {
+        int temperaturaActual = temperaturaMayo[semana, diaSemana];
+        if (temperaturaActual == 0)
+        {
+            continue;
+        }
+
+        if (temperaturaActual > temperaturaMaxima)
+        {
+            temperaturaMaxima = temperaturaActual;
+            string nombreDia = diaSemana switch
+            {
+                0 => "Lunes",
+                1 => "Martes",
+                2 => "Miércoles",
+                3 => "Jueves",
+                4 => "Viernes",
+                5 => "Sábado",
+                6 => "Domingo",
+                _ => "Día desconocido"
+            };
+            diaXSemanaMaxima = $"{nombreDia} {semana * 7 + diaSemana + 1}";
+        }
+        
+        if (temperaturaMinima == 0 || temperaturaActual < temperaturaMinima)
+        {
+            temperaturaMinima = temperaturaActual;
+            string nombreDia = diaSemana switch
+            {
+                0 => "Lunes",
+                1 => "Martes",
+                2 => "Miércoles",
+                3 => "Jueves",
+                4 => "Viernes",
+                5 => "Sábado",
+                6 => "Domingo",
+                _ => "Día desconocido"
+            };
+            diaXSemanaMinima = $"{nombreDia} {semana * 7 + diaSemana + 1}";
+        }
+        
+        if (temperaturaActual > temperaturaMaximaMes)
+        {
+            temperaturaMaximaMes = temperaturaActual;
+            string nombreDia = diaSemana switch
+            {
+                0 => "Lunes",
+                1 => "Martes",
+                2 => "Miércoles",
+                3 => "Jueves",
+                4 => "Viernes",
+                5 => "Sábado",
+                6 => "Domingo",
+                _ => "Día desconocido"
+            };
+            diaXMesMaxima = $"{nombreDia} {semana * 7 + diaSemana + 1}";
+        }
+        temperaturaPromedio += temperaturaActual;    
+    }
+    
+    Console.WriteLine($"Semana {semana + 1}:");
+    Console.WriteLine($"La temperatura más alta de la semana fue el {diaXSemanaMaxima}: {temperaturaMaxima}°C");
+    Console.WriteLine($"La temperatura más baja registrada fue el {diaXSemanaMinima}: {temperaturaMinima}°C");
+    Console.WriteLine($"Temperatura promedio de la semana: {temperaturaPromedio / 7}°C");
+    Console.WriteLine("----------------------------------------");
+    temperaturaPromedio = 0;
+    temperaturaMinima = 0;
+    temperaturaMaxima = 0;
+}
+
+Console.WriteLine("Resumen del mes:");
+Console.WriteLine($"La temperatura más alta de Mayo fue el {diaXMesMaxima}: {temperaturaMaximaMes}°C");
 #endregion
 
 #region 7
