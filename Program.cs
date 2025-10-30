@@ -226,7 +226,7 @@ for (int semana = 0; semana < 5; semana++)
             };
             diaXSemanaMaxima = $"{nombreDia} {semana * 7 + diaSemana + 1}";
         }
-        
+
         if (temperaturaMinima == 0 || temperaturaActual < temperaturaMinima)
         {
             temperaturaMinima = temperaturaActual;
@@ -243,7 +243,7 @@ for (int semana = 0; semana < 5; semana++)
             };
             diaXSemanaMinima = $"{nombreDia} {semana * 7 + diaSemana + 1}";
         }
-        
+
         if (temperaturaActual > temperaturaMaximaMes)
         {
             temperaturaMaximaMes = temperaturaActual;
@@ -260,9 +260,9 @@ for (int semana = 0; semana < 5; semana++)
             };
             diaXMesMaxima = $"{nombreDia} {semana * 7 + diaSemana + 1}";
         }
-        temperaturaPromedio += temperaturaActual;    
+        temperaturaPromedio += temperaturaActual;
     }
-    
+
     Console.WriteLine($"Semana {semana + 1}:");
     Console.WriteLine($"La temperatura más alta de la semana fue el {diaXSemanaMaxima}: {temperaturaMaxima}°C");
     Console.WriteLine($"La temperatura más baja registrada fue el {diaXSemanaMinima}: {temperaturaMinima}°C");
@@ -278,7 +278,33 @@ Console.WriteLine($"La temperatura más alta de Mayo fue el {diaXMesMaxima}: {te
 #endregion
 
 #region 7
+int[,] tablasMultiplicar = new int[10, 10];
 
+for (int i = 0; i < 10; i++)
+{
+    tablasMultiplicar[0, i] = i;
+    tablasMultiplicar[i, 0] = i;
+}
+
+for (int i = 1; i < 10; i++)
+{
+    for (int j = 1; j < 10; j++)
+    {
+        tablasMultiplicar[i, j] = i * j;
+    }
+}
+
+Console.WriteLine("Tablas de multiplicar del 1 al 9:");
+Console.WriteLine("----------------------------------");
+
+for (int i = 0; i < 10; i++)
+{
+    for (int j = 0; j < 10; j++)
+    {
+        Console.Write($"{tablasMultiplicar[i, j],4}");
+    }
+    Console.WriteLine();
+}
 #endregion
 
 #region 8
